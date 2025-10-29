@@ -334,6 +334,38 @@ async def delete_aset(aset_id: int, token: str):
 # Include router
 app.include_router(api_router)
 
+# Mount static files (CSS, JS)
+app.mount("/static", StaticFiles(directory=str(HTML_DIR)), name="static")
+
+# Serve HTML files
+@app.get("/")
+async def serve_login():
+    return FileResponse(HTML_DIR / 'login.html')
+
+@app.get("/login.html")
+async def serve_login_html():
+    return FileResponse(HTML_DIR / 'login.html')
+
+@app.get("/index.html")
+async def serve_index_html():
+    return FileResponse(HTML_DIR / 'index.html')
+
+@app.get("/kategori.html")
+async def serve_kategori_html():
+    return FileResponse(HTML_DIR / 'kategori.html')
+
+@app.get("/aset.html")
+async def serve_aset_html():
+    return FileResponse(HTML_DIR / 'aset.html')
+
+# Serve CSS and JS files
+@app.get("/{filename}")
+async def serve_file(filename: str):
+    file_path = HTML_DIR / filename
+    if file_path.exists() and file_path.is_file():
+        return FileResponse(file_path)
+    raise HTTPException(status_code=404, detail="File not found")
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
