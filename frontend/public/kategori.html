@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kategori - Money Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Money Management</h2>
+            <div class="nav-links">
+                <a href="index.html" data-testid="nav-home">Home</a>
+                <a href="kategori.html" class="active" data-testid="nav-kategori">Kategori</a>
+                <a href="aset.html" data-testid="nav-aset">Aset</a>
+                <span id="userName" class="user-name" data-testid="user-name"></span>
+                <button onclick="logout()" class="btn btn-logout" data-testid="logout-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1>Kelola Kategori Transaksi</h1>
+            <button onclick="showAddModal()" class="btn btn-primary" data-testid="add-kategori-button">+ Tambah Kategori</button>
+        </div>
+        
+        <div class="table-container" data-testid="kategori-list">
+            <table id="kategoriTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Kategori</th>
+                        <th>Tipe</th>
+                        <th>Deskripsi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="kategoriTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center">Memuat data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Modal Tambah/Edit -->
+    <div id="kategoriModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" data-testid="modal-title">Tambah Kategori</h2>
+            
+            <form id="kategoriForm" data-testid="kategori-form">
+                <input type="hidden" id="kategoriId">
+                
+                <div class="form-group">
+                    <label for="namaKategori">Nama Kategori</label>
+                    <input 
+                        type="text" 
+                        id="namaKategori" 
+                        name="namaKategori" 
+                        data-testid="nama-kategori-input"
+                        required
+                        placeholder="Contoh: Gaji, Makan, Transport"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipe">Tipe</label>
+                    <select id="tipe" name="tipe" data-testid="tipe-select" required>
+                        <option value="">Pilih Tipe</option>
+                        <option value="pemasukan">Pemasukan</option>
+                        <option value="pengeluaran">Pengeluaran</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="deskripsi">Deskripsi (Opsional)</label>
+                    <textarea 
+                        id="deskripsi" 
+                        name="deskripsi" 
+                        data-testid="deskripsi-input"
+                        rows="3"
+                        placeholder="Deskripsi kategori"
+                    ></textarea>
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal()" class="btn btn-secondary" data-testid="cancel-button">Batal</button>
+                    <button type="submit" class="btn btn-primary" data-testid="save-button">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="kategori.js"></script>
+</body>
+</html>

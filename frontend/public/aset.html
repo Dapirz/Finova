@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aset - Money Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h2 class="logo">Money Management</h2>
+            <div class="nav-links">
+                <a href="index.html" data-testid="nav-home">Home</a>
+                <a href="kategori.html" data-testid="nav-kategori">Kategori</a>
+                <a href="aset.html" class="active" data-testid="nav-aset">Aset</a>
+                <span id="userName" class="user-name" data-testid="user-name"></span>
+                <button onclick="logout()" class="btn btn-logout" data-testid="logout-button">Logout</button>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <div class="page-header">
+            <h1>Kelola Aset</h1>
+            <button onclick="showAddModal()" class="btn btn-primary" data-testid="add-aset-button">+ Tambah Aset</button>
+        </div>
+        
+        <div class="table-container" data-testid="aset-list">
+            <table id="asetTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nama Aset</th>
+                        <th>Tipe</th>
+                        <th>Saldo Awal</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="asetTableBody">
+                    <tr>
+                        <td colspan="5" class="text-center">Memuat data...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <!-- Modal Tambah/Edit -->
+    <div id="asetModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" data-testid="modal-title">Tambah Aset</h2>
+            
+            <form id="asetForm" data-testid="aset-form">
+                <input type="hidden" id="asetId">
+                
+                <div class="form-group">
+                    <label for="namaAset">Nama Aset</label>
+                    <input 
+                        type="text" 
+                        id="namaAset" 
+                        name="namaAset" 
+                        data-testid="nama-aset-input"
+                        required
+                        placeholder="Contoh: Dompet, BCA, Kartu Kredit"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="tipe">Tipe</label>
+                    <select id="tipe" name="tipe" data-testid="tipe-select" required>
+                        <option value="">Pilih Tipe</option>
+                        <option value="cash">Cash</option>
+                        <option value="rekening">Rekening</option>
+                        <option value="kredit">Kredit</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="saldoAwal">Saldo Awal (Rp)</label>
+                    <input 
+                        type="number" 
+                        id="saldoAwal" 
+                        name="saldoAwal" 
+                        data-testid="saldo-awal-input"
+                        step="0.01"
+                        required
+                        placeholder="0"
+                    >
+                </div>
+                
+                <div class="modal-actions">
+                    <button type="button" onclick="closeModal()" class="btn btn-secondary" data-testid="cancel-button">Batal</button>
+                    <button type="submit" class="btn btn-primary" data-testid="save-button">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="utils.js"></script>
+    <script src="aset.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Money Management</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="login-box">
+            <h1>Money Management</h1>
+            <p class="subtitle">Aplikasi Manajemen Keuangan Pribadi</p>
+            
+            <form id="loginForm" data-testid="login-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        data-testid="username-input"
+                        required
+                        placeholder="Masukkan username"
+                    >
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        data-testid="password-input"
+                        required
+                        placeholder="Masukkan password"
+                    >
+                </div>
+                
+                <div id="errorMessage" class="error-message" data-testid="error-message"></div>
+                
+                <button type="submit" class="btn btn-primary" data-testid="login-button">
+                    Login
+                </button>
+            </form>
+            
+            <div class="info-box">
+                <strong>Info Login:</strong><br>
+                Username: <code>admin</code><br>
+                Password: <code>admin123</code>
+            </div>
+        </div>
+    </div>
+    
+    <script src="config.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
