@@ -1,5 +1,6 @@
 from fastapi import FastAPI, APIRouter, HTTPException, Depends
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, FileResponse
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 import os
@@ -16,6 +17,9 @@ load_dotenv(ROOT_DIR / '.env')
 
 # Database path
 DB_PATH = ROOT_DIR / 'money_management.db'
+
+# HTML files directory (serving from frontend/public)
+HTML_DIR = ROOT_DIR.parent / 'frontend' / 'public'
 
 # Create the main app
 app = FastAPI()
